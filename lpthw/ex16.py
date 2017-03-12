@@ -9,9 +9,11 @@ print("If you do want that, hit RETURN")
 input("?")
 
 print("Opening the file...")
+# open file with writable mode
 target = open(filename, 'w')
 
 print("Truncating the file. Goodbye!")
+# no need to truncate the file since we have opened the file in write mode and we are not doing any seek operations to try and reset our input lines
 target.truncate()
 
 print("Now I'm going to ask you for three lines.")
@@ -22,12 +24,7 @@ line3 = input("line 3: ")
 
 print("I'm going to write these to file.")
 
-target.write(line1)
-target.write("\n")
-target.write(line2)
-target.write("\n")
-target.write(line3)
-target.write("\n")
+target.write(f"{line1}\n{line2}\n{line3}\n")
 
 print("And finally, we close it.")
 target.close()
